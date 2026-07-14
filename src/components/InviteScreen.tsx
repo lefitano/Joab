@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { eventConfig } from "../config/eventConfig";
+import { FaCheckCircle, FaMapMarkerAlt } from "react-icons/fa";
+import { eventConfig, getMapsUrl, getShortLocation } from "../config/eventConfig";
 import CountdownTimer from "./CountdownTimer";
 import Footer from "./Footer";
 
@@ -38,7 +39,7 @@ const quickInfo = [
   },
   {
     label: "Local",
-    value: eventConfig.location.name,
+    value: getShortLocation(eventConfig.location.address),
     icon: (
       <svg {...iconProps}>
         <path d="M12 21s7-6.5 7-11.5A7 7 0 0 0 5 9.5C5 14.5 12 21 12 21Z" />
@@ -119,20 +120,22 @@ export default function InviteScreen({ onOpenRsvp }: { onOpenRsvp: () => void })
 
         <div className="mt-3 flex w-full max-w-xs flex-col gap-2">
           <a
-            href={eventConfig.location.mapsUrl}
+            href={getMapsUrl(eventConfig.location.address)}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full border border-white/30 px-5 py-2.5 text-sm font-semibold text-white/90 transition active:scale-95"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-5 py-2.5 text-sm font-semibold text-white/90 transition active:scale-95"
           >
-            📍 Ver no mapa
+            <FaMapMarkerAlt />
+            Ver no mapa
           </a>
           <button
             type="button"
             onClick={onOpenRsvp}
-            className="rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-lg transition active:scale-95"
+            className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-lg transition active:scale-95"
             style={{ backgroundColor: "var(--color-hero-blue-light)" }}
           >
-            🎉 Confirmar presença
+            <FaCheckCircle />
+            Confirmar presença
           </button>
         </div>
       </div>

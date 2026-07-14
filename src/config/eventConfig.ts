@@ -13,13 +13,31 @@ export const eventConfig = {
   timeDisplay: "19:00",
 
   location: {
-    name: "Local a definir",
-    address: "Rua Exemplo, 123 - Bairro, Cidade - UF",
-    mapsUrl: "https://maps.google.com/?q=Rua+Exemplo+123",
+    address: "Rua Gerôncio Brigido Neto, 355 - Imaculada Conceição, Canindé - CE"
   },
 
-  // Usado futuramente pela seção de confirmação de presença (RSVP).
-  whatsappNumber: "", // ex: "5511999999999"
+  // Número que recebe as confirmações de presença via WhatsApp.
+  // Formato: DDD + número, sem o "55" do Brasil (adicionado automaticamente).
+  whatsappNumber: "85996258615",
 };
+
+// Gera o link do Google Maps automaticamente a partir do endereço acima —
+// não precisa editar isso separadamente, só o campo "address".
+export function getMapsUrl(address: string) {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+}
+
+// Versão curta do endereço (cidade/bairro), usada onde o espaço é apertado
+// (ex: tela única do mobile). Pega o último trecho separado por vírgula.
+export function getShortLocation(address: string) {
+  const parts = address.split(",");
+  return parts[parts.length - 1].trim();
+}
+
+// Monta o link do WhatsApp com a mensagem de confirmação já preenchida.
+export function getWhatsAppRsvpUrl(message: string) {
+  const digits = eventConfig.whatsappNumber.replace(/\D/g, "");
+  return `https://wa.me/55${digits}?text=${encodeURIComponent(message)}`;
+}
 
 export type EventConfig = typeof eventConfig;

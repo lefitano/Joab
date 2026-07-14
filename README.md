@@ -33,14 +33,7 @@ Em telas `sm` e maiores, o convite usa a experiência original com rolagem entre
 
 ## Confirmação de presença (RSVP)
 
-O formulário (`src/components/RsvpForm.tsx`, compartilhado entre a versão modal e a versão de página) já permite que o convidado adicione o nome de acompanhantes/família, além do próprio nome. O envio ainda **não está conectado a um destino final** — por decisão conjunta, isso fica para definirmos juntos. O ponto de conexão está marcado com um comentário `TODO` em `RsvpForm.tsx`.
-
-Opções possíveis para quando formos definir (cada uma com prós/contras):
-
-- **WhatsApp direto**: botão que abre o WhatsApp com mensagem pré-preenchida (incluindo os nomes) para o número do responsável. Simples, sem backend, mas sem lista organizada automática.
-- **Formulário + banco de dados** (ex: Supabase/Firebase): gera lista organizada e consultável, porém exige mais configuração/manutenção.
-- **Google Forms**: fácil de configurar e já gera planilha, mas foge um pouco do visual do convite.
-- **Formulário + e-mail (EmailJS)**: sem backend, envia e-mail a cada confirmação, mas sem lista consolidada visual.
+O formulário (`src/components/RsvpForm.tsx`, compartilhado entre a versão modal e a versão de página) pede só o nome de quem recebeu o convite e se vai comparecer. Ao enviar, abre o WhatsApp (app ou web) com uma mensagem pronta contendo esses dados, para o número configurado em `whatsappNumber` (`src/config/eventConfig.ts`) — o convidado só precisa tocar em enviar. Não há backend nem lista organizada automática; as confirmações chegam como mensagens no WhatsApp.
 
 ## Deploy no Netlify
 

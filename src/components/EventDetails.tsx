@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { eventConfig } from "../config/eventConfig";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { eventConfig, getMapsUrl } from "../config/eventConfig";
 import TiltCard from "./TiltCard";
 
 const iconProps = {
@@ -37,7 +38,7 @@ const details = [
   },
   {
     title: "Local",
-    lines: [eventConfig.location.name, eventConfig.location.address],
+    lines: [eventConfig.location.address],
     icon: (
       <svg {...iconProps}>
         <path d="M12 21s7-6.5 7-11.5A7 7 0 0 0 5 9.5C5 14.5 12 21 12 21Z" />
@@ -89,13 +90,14 @@ export default function EventDetails() {
 
       <div className="mt-10 flex flex-wrap justify-center gap-4">
         <a
-          href={eventConfig.location.mapsUrl}
+          href={getMapsUrl(eventConfig.location.address)}
           target="_blank"
           rel="noreferrer"
-          className="rounded-full px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:brightness-110"
+          className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:brightness-110"
           style={{ backgroundColor: "var(--color-hero-red)" }}
         >
-          📍 Abrir no mapa
+          <FaMapMarkerAlt />
+          Abrir no mapa
         </a>
       </div>
     </section>

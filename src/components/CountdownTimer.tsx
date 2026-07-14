@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { FaBirthdayCake } from "react-icons/fa";
 import { eventConfig } from "../config/eventConfig";
 
 function getTimeLeft() {
@@ -32,8 +33,12 @@ export default function CountdownTimer({ compact = false }: { compact?: boolean 
 
   if (timeLeft.isPast) {
     return (
-      <p className="font-display text-hero-gold text-center text-2xl" style={{ color: "var(--color-hero-gold)" }}>
-        A festa começou! 🎉
+      <p
+        className="font-display text-hero-gold flex items-center justify-center gap-2 text-center text-2xl"
+        style={{ color: "var(--color-hero-gold)" }}
+      >
+        A festa começou!
+        <FaBirthdayCake />
       </p>
     );
   }

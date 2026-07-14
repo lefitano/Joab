@@ -1,4 +1,4 @@
-import { FaLaptopCode } from "react-icons/fa";
+import { FaLaptopCode, FaSpider } from "react-icons/fa";
 import { eventConfig } from "../config/eventConfig";
 
 export default function Footer({ compact = false }: { compact?: boolean }) {
@@ -15,8 +15,9 @@ export default function Footer({ compact = false }: { compact?: boolean }) {
 
   return (
     <footer className="border-t border-white/10 px-6 py-10 text-center">
-      <p className="font-display text-lg text-white/80">
-        Com carinho, esperamos você lá! 🕷️
+      <p className="font-display flex items-center justify-center gap-2 text-lg text-white/80">
+        Com carinho, esperamos você lá!
+        <FaSpider />
       </p>
       <p className="mt-2 text-xs text-white/40">
         Aniversário do {eventConfig.name} — {eventConfig.dateDisplay}
