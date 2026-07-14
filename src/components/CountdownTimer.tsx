@@ -22,7 +22,7 @@ const units: { key: keyof ReturnType<typeof getTimeLeft>; label: string }[] = [
   { key: "seconds", label: "seg" },
 ];
 
-export default function CountdownTimer() {
+export default function CountdownTimer({ compact = false }: { compact?: boolean }) {
   const [timeLeft, setTimeLeft] = useState(getTimeLeft);
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function CountdownTimer() {
   }
 
   return (
-    <div className="flex justify-center gap-3 sm:gap-5">
+    <div className={compact ? "flex justify-center gap-2" : "flex justify-center gap-3 sm:gap-5"}>
       {units.map((unit, i) => (
         <motion.div
           key={unit.key}
@@ -47,12 +47,16 @@ export default function CountdownTimer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: i * 0.08 }}
-          className="flex w-16 flex-col items-center rounded-xl border border-white/15 bg-white/5 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:w-20"
+          className={
+            compact
+              ? "flex w-14 flex-col items-center rounded-lg border border-white/15 bg-white/5 py-2 backdrop-blur-sm"
+              : "flex w-16 flex-col items-center rounded-xl border border-white/15 bg-white/5 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:w-20"
+          }
         >
-          <span className="font-display text-3xl text-white sm:text-4xl">
+          <span className={compact ? "font-display text-xl text-white" : "font-display text-3xl text-white sm:text-4xl"}>
             {String(timeLeft[unit.key]).padStart(2, "0")}
           </span>
-          <span className="mt-1 text-[0.65rem] tracking-widest text-white/60 uppercase sm:text-xs">
+          <span className={compact ? "text-[0.55rem] tracking-widest text-white/60 uppercase" : "mt-1 text-[0.65rem] tracking-widest text-white/60 uppercase sm:text-xs"}>
             {unit.label}
           </span>
         </motion.div>

@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { eventConfig } from "../config/eventConfig";
-import { buildGoogleCalendarUrl } from "../utils/calendarLink";
 import TiltCard from "./TiltCard";
 
 const iconProps = {
@@ -93,18 +92,10 @@ export default function EventDetails() {
           href={eventConfig.location.mapsUrl}
           target="_blank"
           rel="noreferrer"
-          className="rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white/90 transition hover:border-white/60 hover:bg-white/10"
-        >
-          📍 Abrir no mapa
-        </a>
-        <a
-          href={buildGoogleCalendarUrl()}
-          target="_blank"
-          rel="noreferrer"
           className="rounded-full px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:brightness-110"
           style={{ backgroundColor: "var(--color-hero-red)" }}
         >
-          🗓️ Adicionar ao calendário
+          📍 Abrir no mapa
         </a>
       </div>
     </section>

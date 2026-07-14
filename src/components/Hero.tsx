@@ -2,29 +2,6 @@ import { useRef } from "react";
 import { motion, useMotionTemplate, useSpring } from "framer-motion";
 import { eventConfig } from "../config/eventConfig";
 
-// Emblema de aranha simples desenhado em SVG (sem depender de imagem externa).
-function SpiderEmblem({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 120 120" className={className} aria-hidden="true">
-      <g fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round">
-        <circle cx="60" cy="58" r="9" fill="currentColor" stroke="none" />
-        <path d="M60 58 L60 8" />
-        <path d="M60 58 L26 24" />
-        <path d="M60 58 L14 58" />
-        <path d="M60 58 L26 92" />
-        <path d="M60 58 L60 112" />
-        <path d="M60 58 L94 92" />
-        <path d="M60 58 L106 58" />
-        <path d="M60 58 L94 24" />
-        <path d="M38 30 Q60 22 82 30" />
-        <path d="M22 45 Q60 34 98 45" />
-        <path d="M22 71 Q60 84 98 71" />
-        <path d="M38 86 Q60 96 82 86" />
-      </g>
-    </svg>
-  );
-}
-
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -58,8 +35,18 @@ export default function Hero() {
       />
       <div className="absolute inset-0 -z-10 bg-halftone-red opacity-30" />
 
-      <SpiderEmblem className="text-white/10 animate-float-slow absolute -left-10 top-16 h-40 w-40 sm:h-56 sm:w-56" />
-      <SpiderEmblem className="text-white/10 animate-float-slower absolute -right-8 bottom-10 h-32 w-32 sm:h-48 sm:w-48" />
+      <img
+        src="/images/spiderman-chibi.webp"
+        alt=""
+        aria-hidden="true"
+        className="animate-float-slow absolute -left-6 bottom-8 -z-10 hidden w-36 opacity-90 drop-shadow-2xl select-none sm:block sm:w-44 md:w-52"
+      />
+      <img
+        src="/images/spiderman-hanging.webp"
+        alt=""
+        aria-hidden="true"
+        className="animate-float-slower absolute top-0 right-8 -z-10 hidden w-32 opacity-95 drop-shadow-2xl select-none sm:block sm:w-40 md:w-48"
+      />
 
       <motion.span
         initial={{ opacity: 0, y: -12 }}

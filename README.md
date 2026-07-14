@@ -19,26 +19,25 @@ Todos os dados do evento (nome, data, horário, local) ficam centralizados em um
 src/config/eventConfig.ts
 ```
 
-Edite os campos `dateDisplay`, `timeDisplay`, `isoDateTime` e `location` conforme necessário. O `isoDateTime` alimenta a contagem regressiva e o botão "Adicionar ao calendário", então mantenha-o no formato `AAAA-MM-DDTHH:mm:ss`.
+Edite os campos `dateDisplay`, `timeDisplay`, `isoDateTime` e `location` conforme necessário. O `isoDateTime` alimenta a contagem regressiva, então mantenha-o no formato `AAAA-MM-DDTHH:mm:ss`.
 
 ## Imagens do tema Homem-Aranha
 
-O visual atual foi construído inteiramente com CSS/SVG (cores, teias e emblema desenhados em código), já que as imagens enviadas não chegaram completas. Para usar as imagens reais:
+As imagens ficam em `public/images/` (`spiderman-chibi.webp` e `spiderman-hanging.webp`), usadas em `src/components/Hero.tsx` (desktop) e `src/components/InviteScreen.tsx` (mobile). Os arquivos originais tinham fundo branco "assado" nos pixels (sem transparência real); o fundo foi removido via flood-fill a partir das bordas e as imagens foram otimizadas para WebP, para carregar rápido no celular. Para trocar por outras imagens, substitua os arquivos em `public/images/` mantendo os mesmos nomes, ou atualize os caminhos `src` nos dois componentes.
 
-1. Coloque os arquivos em `public/images/` (ex: `public/images/spiderman-1.png`).
-2. Referencie-os nos componentes (`src/components/Hero.tsx`, `src/components/WebBackground.tsx`) substituindo os elementos SVG decorativos por `<img src="/images/spiderman-1.png" />`.
+## Layout mobile (tela única, sem rolagem)
+
+Em telas menores que `sm` (640px), o convite é renderizado pelo componente `src/components/InviteScreen.tsx`: tudo (nome, contagem regressiva, data/horário/local e botões) cabe em uma única tela (`h-dvh`, sem scroll), pensado para facilitar o acesso pelo celular. A confirmação de presença abre como um modal (`RsvpModal.tsx`) para não ocupar espaço na tela principal.
+
+Em telas `sm` e maiores, o convite usa a experiência original com rolagem entre seções (`Hero.tsx`, `EventDetails.tsx`, `RsvpSection.tsx`, `Footer.tsx`), com a confirmação de presença exibida diretamente na página.
 
 ## Confirmação de presença (RSVP)
 
-A seção "Confirme sua presença" já está com o visual completo, mas o envio ainda **não está conectado a um destino final** — por decisão conjunta, isso fica para definirmos juntos. O ponto de conexão está marcado com um comentário `TODO` em:
-
-```text
-src/components/RsvpSection.tsx
-```
+O formulário (`src/components/RsvpForm.tsx`, compartilhado entre a versão modal e a versão de página) já permite que o convidado adicione o nome de acompanhantes/família, além do próprio nome. O envio ainda **não está conectado a um destino final** — por decisão conjunta, isso fica para definirmos juntos. O ponto de conexão está marcado com um comentário `TODO` em `RsvpForm.tsx`.
 
 Opções possíveis para quando formos definir (cada uma com prós/contras):
 
-- **WhatsApp direto**: botão que abre o WhatsApp com mensagem pré-preenchida para o número do responsável. Simples, sem backend, mas sem lista organizada automática.
+- **WhatsApp direto**: botão que abre o WhatsApp com mensagem pré-preenchida (incluindo os nomes) para o número do responsável. Simples, sem backend, mas sem lista organizada automática.
 - **Formulário + banco de dados** (ex: Supabase/Firebase): gera lista organizada e consultável, porém exige mais configuração/manutenção.
 - **Google Forms**: fácil de configurar e já gera planilha, mas foge um pouco do visual do convite.
 - **Formulário + e-mail (EmailJS)**: sem backend, envia e-mail a cada confirmação, mas sem lista consolidada visual.
