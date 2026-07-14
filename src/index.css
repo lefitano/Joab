@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Bangers", "Poppins", system-ui, sans-serif;
+  --font-body: "Poppins", system-ui, sans-serif;
+
+  --color-hero-red: #c1121f;
+  --color-hero-red-dark: #8a0d16;
+  --color-hero-blue: #0b0f2b;
+  --color-hero-blue-light: #1b3a8a;
+  --color-hero-gold: #f5c518;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-hero-blue);
+  color: white;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.03em;
+}
+
+/* Título 3D estilo quadrinho: várias camadas de sombra empilhadas */
+.text-comic-3d {
+  text-shadow:
+    1px 1px 0 var(--color-hero-red-dark),
+    2px 2px 0 var(--color-hero-red-dark),
+    3px 3px 0 var(--color-hero-red-dark),
+    4px 4px 0 var(--color-hero-red-dark),
+    5px 5px 0 var(--color-hero-red-dark),
+    6px 6px 8px rgba(0, 0, 0, 0.45);
+}
+
+/* Textura de pontos estilo halftone (quadrinho) */
+.bg-halftone {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.14) 1.4px, transparent 1.4px);
+  background-size: 16px 16px;
+}
+
+.bg-halftone-red {
+  background-image: radial-gradient(rgba(193, 18, 31, 0.5) 1.6px, transparent 1.6px);
+  background-size: 14px 14px;
+}
+
+.perspective-container {
+  perspective: 1200px;
+}
+
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-18px) rotate(3deg); }
+}
+
+@keyframes float-slower {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(14px) rotate(-2deg); }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-float-slower {
+  animation: float-slower 8s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2.4s ease-in-out infinite;
+}
+
+::selection {
+  background: var(--color-hero-red);
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-hero-blue);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-hero-red);
+  border-radius: 8px;
+}
