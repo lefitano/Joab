@@ -27,11 +27,10 @@ export function getMapsUrl(address: string) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 }
 
-// Versão curta do endereço (cidade/bairro), usada onde o espaço é apertado
-// (ex: tela única do mobile). Pega o último trecho separado por vírgula.
+// Versão curta do endereço (rua + número), usada onde o espaço é apertado
+// (ex: tela única do mobile). Pega o trecho antes do primeiro " - ".
 export function getShortLocation(address: string) {
-  const parts = address.split(",");
-  return parts[parts.length - 1].trim();
+  return address.split(" - ")[0].trim();
 }
 
 // Monta o link do WhatsApp com a mensagem de confirmação já preenchida.

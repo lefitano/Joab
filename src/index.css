@@ -29,6 +29,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Abaixo de sm (640px): convite cabe em uma tela só, sem nenhum scroll —
+   inclusive bloqueia o "bounce" elástico do mobile que revelava o fundo. */
+@media (max-width: 639px) {
+  html,
+  body {
+    height: 100dvh;
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+}
+
 .font-display {
   font-family: var(--font-display);
   letter-spacing: 0.03em;

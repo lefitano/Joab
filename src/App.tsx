@@ -12,7 +12,7 @@ function App() {
   const [rsvpOpen, setRsvpOpen] = useState(false);
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-dvh overflow-hidden sm:min-h-screen sm:overflow-visible">
       <WebBackground />
 
       {/* Mobile: convite inteiro em uma única tela, sem scroll */}

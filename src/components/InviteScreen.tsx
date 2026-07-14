@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { FaCheckCircle, FaMapMarkerAlt } from "react-icons/fa";
-import { eventConfig, getMapsUrl, getShortLocation } from "../config/eventConfig";
+import { FaCheckCircle } from "react-icons/fa";
+import { eventConfig, getShortLocation } from "../config/eventConfig";
 import CountdownTimer from "./CountdownTimer";
 import Footer from "./Footer";
 
@@ -65,7 +65,7 @@ export default function InviteScreen({ onOpenRsvp }: { onOpenRsvp: () => void })
         src="/images/spiderman-chibi.webp"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute -right-4 -bottom-2 -z-10 w-28 opacity-90 select-none"
+        className="animate-float-slow pointer-events-none absolute -right-4 -bottom-2 -z-10 w-28 opacity-90 select-none"
       />
 
       <div className="flex flex-1 flex-col items-center justify-center gap-3">
@@ -119,15 +119,22 @@ export default function InviteScreen({ onOpenRsvp }: { onOpenRsvp: () => void })
         </div>
 
         <div className="mt-3 flex w-full max-w-xs flex-col gap-2">
-          <a
-            href={getMapsUrl(eventConfig.location.address)}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-5 py-2.5 text-sm font-semibold text-white/90 transition active:scale-95"
-          >
-            <FaMapMarkerAlt />
-            Ver no mapa
-          </a>
+          {/*
+            Botão "Ver no mapa" desativado a pedido do cliente (o endereço
+            completo já aparece no card acima). Para reativar: importe
+            `FaMapMarkerAlt` de "react-icons/fa" e `getMapsUrl` de
+            "../config/eventConfig" no topo do arquivo, e descomente:
+
+            <a
+              href={getMapsUrl(eventConfig.location.address)}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-5 py-2.5 text-sm font-semibold text-white/90 transition active:scale-95"
+            >
+              <FaMapMarkerAlt />
+              Ver no mapa
+            </a>
+          */}
           <button
             type="button"
             onClick={onOpenRsvp}
