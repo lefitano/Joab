@@ -6,11 +6,11 @@ export const eventConfig = {
 
   // Formato ISO usado pelo countdown e pelo link de calendário.
   // Ajuste o ano se necessário.
-  isoDateTime: "2026-08-08T19:00:00",
+  isoDateTime: "2026-08-08T19:30:00",
 
   dateDisplay: "08 de Agosto",
   weekdayDisplay: "Sábado",
-  timeDisplay: "19:00",
+  timeDisplay: "19:30",
 
   location: {
     address: "Rua Gerôncio Brigido Neto, 355 - Imaculada Conceição, Canindé - CE"
